@@ -9,7 +9,9 @@ jobs:
       matrix:
         node: ['12.x', '14.x', '16.x']
         os: [ubuntu-latest, windows-latest]
-
+    env:
+      NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
+      NOTION_TABLE_ID: ${{ secrets.NOTION_TABLE_ID }}
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@646cdf48217256a3d0b80361c5a50727664284f2
@@ -26,6 +28,3 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
-          NOTION_TABLE_ID: ${{ secrets.NOTION_TABLE_ID }}
